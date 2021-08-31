@@ -12,5 +12,5 @@ public class AuditResponseDTO {
     private Integer cpu_logical_cores;
     private Integer cpu_physical_cores;
     private String brand;
-    private Long auditTime;
+    private Long audit_time;
 }

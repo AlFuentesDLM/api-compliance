@@ -38,7 +38,7 @@ public class AuditService implements IAuditService {
     }
 
     @Override
-    public AuditResponseDTO getAuditById(Integer id) {
+    public AuditResponseDTO getAuditById(Long id) {
         Audit audit = auditRepository.getById(id);
         if (Objects.isNull(audit)) throw new ApiException("not_found", 404, "Audit not found");
         return mapModelToDTO(audit);

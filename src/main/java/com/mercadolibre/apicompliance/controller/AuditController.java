@@ -27,8 +27,8 @@ public class AuditController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<AuditRequestDTO> getAgentRecord(@PathVariable String id){
-        return null;
+    private ResponseEntity<AuditResponseDTO> getAgentRecord(@PathVariable Long id){
+        return new ResponseEntity<>(auditService.getAuditById(id),HttpStatus.OK);
     }
 
     @GetMapping("/{id}/process")
