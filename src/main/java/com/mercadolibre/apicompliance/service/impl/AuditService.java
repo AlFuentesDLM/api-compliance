@@ -39,7 +39,7 @@ public class AuditService implements IAuditService {
 
     @Override
     public AuditResponseDTO getAuditById(Long id) {
-        Audit audit = auditRepository.getById(id);
+        Audit audit = auditRepository.getAuditById(id);
         if (Objects.isNull(audit)) throw new ApiException("not_found", 404, "Audit not found");
         return mapModelToDTO(audit);
     }
@@ -52,14 +52,14 @@ public class AuditService implements IAuditService {
     }
 
     @Override
-    public List<ProcessResponseDTO> getProcessByAuditId(Integer id, String filter) {
+    public List<ProcessResponseDTO> getProcessByAuditId(Long id, String filter) {
         List<Process> processList = processRepository.getAllByAuditId(id);
         if (processList.isEmpty()) throw new ApiException("not_found", 404, "There's no process with this audit id");
         return mapProcessToDTO(processList);
     }
 
     @Override
-    public List<UsersResponseDTO> getUsersByAuditId(Integer id, String filter) {
+    public List<UsersResponseDTO> getUsersByAuditId(Long id) {
         List<Users> usersList = usersRepository.getAllByAuditId(id);
         if (usersList.isEmpty()) throw new ApiException("not_found", 404, "There's no users with this audit id");
         return mapUsersToDTO(usersList);

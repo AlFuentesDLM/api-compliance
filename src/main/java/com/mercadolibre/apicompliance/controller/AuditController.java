@@ -32,13 +32,13 @@ public class AuditController {
     }
 
     @GetMapping("/{id}/process")
-    private ResponseEntity<List<ProcessResponseDTO>> getListProcessAgent(@PathVariable String id,
+    private ResponseEntity<List<ProcessResponseDTO>> getListProcessAgent(@PathVariable Long id,
                                                                          @RequestParam(required = false) String filter){
-        return null;
+        return new ResponseEntity<>(auditService.getProcessByAuditId(id,filter),HttpStatus.OK);
     }
     @GetMapping("/{id}/users")
-    private ResponseEntity<List<UsersResponseDTO>> getUsersListAgent(@PathVariable String id){
-        return null;
+    private ResponseEntity<List<UsersResponseDTO>> getUsersListAgent(@PathVariable Long id){
+        return new ResponseEntity<>(auditService.getUsersByAuditId(id),HttpStatus.OK);
     }
 
 }
