@@ -94,9 +94,9 @@ public class AuditService implements IAuditService {
     }
 
     private AuditResponseDTO mapModelToDTO(Audit audit) {
-        return new AuditResponseDTO(audit.getOsName(), audit.getOsVersion(),
+        return new AuditResponseDTO(audit.getId(),audit.getOsName(), audit.getOsVersion(),
                 audit.getArchitecture(), audit.getLogicalCores(), audit.getPhysicalCores(),
-                audit.getBrand(), audit.getTimestamp());
+                audit.getBrand(), audit.getTimestamp(),audit.getIp());
     }
 
     private Audit mapAgentDto(AuditRequestDTO auditRequestDTO, String ip) {

@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
@@ -26,10 +27,10 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler
     @ResponseBody
-    public ResponseEntity<ApiResponse> handleApiException(ApiException ex){
-        return  ResponseEntity
+    public ResponseEntity<ApiResponse> handleApiException(ApiException ex) {
+        return ResponseEntity
                 .status(ex.getStatus())
-                .body(new ApiResponse(ex.getError(),ex.getStatus(),ex.getMessage()));
+                .body(new ApiResponse(ex.getError(), ex.getStatus(), ex.getMessage()));
     }
 
 
@@ -44,20 +45,28 @@ public class ApiExceptionHandler {
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ApiResponse handlerException(MethodArgumentTypeMismatchException exception) {
-        return new ApiResponse("bad_request",400,exception.getMessage());
+    public ApiResponse handlerException(MissingServletRequestParameterException exception) {
+        return new ApiResponse("bad_request", 400, exception.getMessage());
     }
+
+    @ExceptionHandler
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ApiResponse handlerException(MethodArgumentTypeMismatchException exception) {
+        return new ApiResponse("bad_request", 400, exception.getMessage());
+    }
+
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ApiResponse handlerException(HttpMessageNotReadableException exception) {
-        return new ApiResponse("bad_request",400,exception.getMessage());
+        return new ApiResponse("bad_request", 400, exception.getMessage());
     }
 
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
     public ApiResponse handlerException(HttpRequestMethodNotSupportedException exception) {
-        return new ApiResponse("method_not_allowed",405,exception.getMessage());
+        return new ApiResponse("method_not_allowed", 405, exception.getMessage());
     }
 }

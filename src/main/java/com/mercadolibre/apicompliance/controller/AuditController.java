@@ -41,4 +41,9 @@ public class AuditController {
         return new ResponseEntity<>(auditService.getUsersByAuditId(id),HttpStatus.OK);
     }
 
+    @GetMapping()
+    private  ResponseEntity<List<AuditResponseDTO>> getAuditsByIp(@RequestParam(name = "ip") String ip){
+        return new ResponseEntity<>(auditService.getAuditsByIp(ip),HttpStatus.OK);
+    }
+
 }
