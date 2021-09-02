@@ -1,6 +1,6 @@
 # API compliance
  
-Esta aplicación web de compliance nos ayuda a almacenar los datos de diferentes sistemas que enviaran informacion a traves de un agente [python-server-agent](https://github.com/AlFuentesDLM/server-agent
+Esta aplicación web de compliance nos ayuda a almacenar los datos de diferentes sistemas que enviaran informacion a traves de un agente [python server-agent](https://github.com/AlFuentesDLM/server-agent)
  
 Todos esos datos se almacenaran de dos formas, en una base de datos relacional y en un archivo json.
 ## Dependencias
