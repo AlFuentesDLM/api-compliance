@@ -23,7 +23,8 @@ Todos esos datos se almacenaran de dos formas, en una base de datos relacional y
    cd api-com
    docker-compose up -d
 ```
-esto creará un contenedor con todo lo que necesitamos para ejecutar la base de datos, además, creará un volumen en la carpeta donde se ejecuto el script.
+Esto creará un contenedor con todo lo que necesitamos para ejecutar la base de datos, además, creará un volumen en la carpeta donde se ejecuto el script.
+
 ### Variables
 Para empezar necesitamos setear variables de entorno que tienen que ver con los datos de conexión a la base de datos.
  
