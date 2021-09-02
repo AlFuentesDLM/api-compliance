@@ -147,72 +147,24 @@ POST http://localhost:8080/api/v1/audit
 GET http://localhost:8080/api/v1/audit/{audit_id}
 ```
  
-- Body
- 
-```json
-{
- "users": [
-   {
-     "name": "randomname",
-     "terminal": "console",
-     "host": "198.1.1.1",
-     "pid": 158
-   },
-   {
-     "name": "alfuentes",
-     "terminal": "ttys001",
-     "host": null,
-     "pid": 58276
-   }
- ],
- "process": [
-   {
-     "username": "_atsserver",
-     "ppid": 1,
-     "name": "fontd",
-     "pid": 83973
-   },
-   {
-     "username": "root",
-     "ppid": 1,
-     "name": "com.crowdstrike.",
-     "pid": 89332
-   }
- ],
- "os_name": "Darwin",
- "os_version": "20.5.0",
- "architecture": "X86_64",
- "cpu_logical_cores": 8,
- "cpu_physical_cores": 4,
- "brand": "Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz",
- "timestamp": 1630504456584
-}
-```
- 
- 
-2. Consultar audit
- 
-```http
-GET http://localhost:8080/api/v1/audit/{audit_id}
-```
- 
 - Response
  
 ```json
 {
- "id": 10,
- "os_name": "Darwin",
- "os_version": "20.5.0",
- "architecture": "X86_64",
- "cpu_logical_cores": 8,
- "cpu_physical_cores": 4,
- "brand": "Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz",
- "audit_time": 1630504456588,
- "ip": "186.10.64.22"
+    "id": 1,
+    "os_name": "Darwin",
+    "os_version": "20.5.0",
+    "architecture": "X86_64",
+    "cpu_logical_cores": 8,
+    "cpu_physical_cores": 4,
+    "brand": "Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz",
+    "audit_time": 1630504456587,
+    "ip": "186.10.64.22"
 }
 ```
+
  
-3. Consultar procesos de un audit
+###  3. Consultar procesos de un audit
  
 ```http
 GET http://localhost:8080/api/v1/audit/{audit_id}/process
@@ -248,7 +200,8 @@ GET http://localhost:8080/api/v1/audit/{audit_id}/process
  }
 ]
 ```
-### 3. consultar sesion de usuarios
+
+### 4. consultar sesion de usuarios
 - Endpoint
 ```http
 GET http://localhost:8080/api/v1/audit/{audit_id}/users
@@ -270,10 +223,11 @@ GET http://localhost:8080/api/v1/audit/{audit_id}/users
    "host": "some:ip:adress",
    "number": 58276
  }
+ //...
 ]
 ```
  
-### 4. Consultar todas las audit de una misma ip
+### 5. Consultar todas las audit de una misma ip
  
 - Endpoint
  
