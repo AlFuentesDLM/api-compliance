@@ -3,12 +3,14 @@ package com.mercadolibre.apicompliance.controller;
 import com.mercadolibre.apicompliance.dtos.request.AuditRequestDTO;
 import com.mercadolibre.apicompliance.dtos.response.*;
 import com.mercadolibre.apicompliance.service.IAuditService;
+import com.mercadolibre.apicompliance.utils.FileUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -22,7 +24,8 @@ public class AuditController {
 
     @PostMapping()
     private ResponseEntity<AuditCreatedResponseDTO> addNewRecord(@Valid @RequestBody AuditRequestDTO auditRequestDTO,
-                                                    HttpServletRequest request){
+                                                    HttpServletRequest request) throws IOException {
+        FileUtils.saveFile(auditRequestDTO,request.getRemoteAddr()+"-"+auditRequestDTO.getTimestamp().toString());
         return new ResponseEntity<>(auditService.addNewRecord(auditRequestDTO,request.getRemoteAddr()),HttpStatus.CREATED);
     }
 
