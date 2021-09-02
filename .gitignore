@@ -18,7 +18,6 @@ target/
 *.iws
 *.iml
 *.ipr
-data
 
 ### NetBeans ###
 /nbproject/private/
@@ -32,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+###docker
+data
+my-db
